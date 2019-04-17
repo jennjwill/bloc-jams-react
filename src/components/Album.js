@@ -14,7 +14,7 @@ class Album extends Component {
             album: album
         };
     }
-S
+
     render() {
         return (
             <section className="album">
@@ -36,7 +36,7 @@ S
                         {
                          this.state.album.songs.map( (songs, index) =>
                          <tr>
-                         <td>{songs[index]}</td>
+                         <td>{index +1}</td>
                          <td>{songs.title}</td>
                          <td>{songs.duration}</td>
                          </tr>
