@@ -46,6 +46,16 @@ class Album extends Component {
     }
   }
 
+  hoverPlayPauseButton(song) {
+    const playPause = this.state.currentSong === song;
+    if (this.state.isPlaying) {
+      <span className="ion-pause"></span>
+    } else {
+      <span className="ion-play"></span>
+    } 
+
+  }
+
   render() {
     return (
       <section className="album">
@@ -74,7 +84,9 @@ class Album extends Component {
                 key={index}
                 onClick={() => this.handleSongClick(song)}
               >
-                <td>{index + 1}</td>
+            <td> onMouseLeave={() => {index + 1} }
+            onMouseEnter={ if { isPlaying => <span className="ion-pause" </span>} else { => <span className="ion-play"></span>} } </td>
+
                 <td>{song.title}</td>
                 <td>{song.duration}</td>
               </tr>
