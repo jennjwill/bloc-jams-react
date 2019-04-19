@@ -90,7 +90,7 @@ class Album extends Component {
                   {() => {
                     index + 1;
                   }}
-                  onMouseEnter={hoverPlayPauseButton}{" "}
+                  onMouseEnter= {() => this.hoverPlayPauseButton(song)}
                 </td>
 
                 <td>{song.title}</td>
