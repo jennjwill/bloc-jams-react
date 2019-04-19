@@ -46,15 +46,17 @@ class Album extends Component {
     }
   }
 
+  // function to show play and/or pause button in place of song# when hovering over song
   hoverPlayPauseButton(song) {
-    const playPause = this.state.currentSong === song;
-    if (this.state.isPlaying) {
-      <span className="ion-pause"></span>
-    } else {
-      <span className="ion-play"></span>
+    const playingSong = this.state.currentSong;
+    if (isPlaying) { 
+    <span className="ion-pause"></span>;
+   } else {
+   <span className="ion-play"></span>};       
     } 
 
   }
+ 
 
   render() {
     return (
@@ -85,7 +87,7 @@ class Album extends Component {
                 onClick={() => this.handleSongClick(song)}
               >
             <td> onMouseLeave={() => {index + 1} }
-            onMouseEnter={ if { isPlaying => <span className="ion-pause" </span>} else { => <span className="ion-play"></span>} } </td>
+            onMouseEnter={ hoverPlayPauseButton } </td>
 
                 <td>{song.title}</td>
                 <td>{song.duration}</td>
@@ -96,6 +98,6 @@ class Album extends Component {
       </section>
     );
   }
-}
+
 
 export default Album;
