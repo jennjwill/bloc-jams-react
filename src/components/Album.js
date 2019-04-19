@@ -81,10 +81,12 @@ class Album extends Component {
                 key={index}
                 onClick={() => this.handleSongClick(song)}
               >
-                <td>
-                  className="song" key={index}
+                <td
+                  className="song"
+                  key={index}
                   mouseEnter={() => this.handleHover(song)}
                   mouseLeave={() => this.handleNoHover(song)}
+                >
                   index + 1;
                 </td>
 
