@@ -47,13 +47,11 @@ class Album extends Component {
   }
 
   // function to show play and/or pause button in place of song# when hovering over song
-  hoverPlayPauseButton(song) {    
+  hoverPlayPauseButton(song) {
     if (this.state.album.currentSong.isPlaying === this.state.hoveredSong) {
       return <span className="ion-pause" />;
-    } else if  (this.state.hoveredSong)
-      return <span className="ion-play" />;
-    }
-  
+    } else if (this.state.hoveredSong) return <span className="ion-play" />;
+  }
 
   render() {
     return (
@@ -84,11 +82,10 @@ class Album extends Component {
                 onClick={() => this.handleSongClick(song)}
               >
                 <td>
-                  {/* trying out different ways to arrange methods, states, and variables, and it's a mess, I know. I think you mean the map function from above on line 80 works in this data row since it's a child of tr? I also don't know what to do with hoverPlayPauseButton. */}
-                  this.state.mouseLeave = {hoveredSong: null} mouseLeave = onMouseLeave {() => {
-                    index + 1;
-                  } 
-                  mouseEnter = onMouseEnter{() => this.state = {song: hoveredSong} this.hoverPlayPauseButton(song, index)}
+                  className="song" key={index}
+                  mouseEnter={() => this.handleHover(song)}
+                  mouseLeave={() => this.handleNoHover(song)}
+                  index + 1;
                 </td>
 
                 <td>{song.title}</td>
