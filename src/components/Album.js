@@ -86,10 +86,10 @@ class Album extends Component {
                   className="song"
                   key={index}
                   onMouseEnter={() => this.hoverPlayPauseButton(song)}
-                  onMouseLeave={() => this.handleNoHover(song)}
-                >
-                  {index + 1}
-                </td>
+                  onMouseLeave={() => {
+                    index + 1;
+                  }}
+                />
 
                 <td>{song.title}</td>
                 <td>{song.duration}</td>
