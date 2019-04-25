@@ -12,7 +12,8 @@ class Album extends Component {
     this.state = {
       album: album,
       currentSong: album.songs[0],
-      isPlaying: false
+      isPlaying: false,
+      hoverSong: null
     };
 
     this.audioElement = document.createElement("audio");
@@ -47,11 +48,48 @@ class Album extends Component {
   }
 
   // function to show play and/or pause button in place of song# when hovering over song
-  hoverPlayPauseButton(song) {
-    const hoverSong = this.state.currentHover;
-    if (this.state.album.currentSong.isPlaying === this.state.currentHover) {
-      return <span className="ion-pause" />;
-    } else if (this.state.currentHover) return <span className="ion-play" />;
+
+  hoverPlayPauseButton(song, index) {
+    if (
+      this.state.isPlaying &&
+      this.state.currentSong == song &&
+      this.state.hoverSong !== song
+    ) {
+      return <span className="ion-md-pause" />;
+    } else if (
+      this.state.hoverSong == song &&
+      this.state.currentSong !== song
+    ) {
+      return <span className="ion-md-play" />;
+    } else if (
+      this.state.hoverSong == song &&
+      this.state.currentSong == song &&
+      this.state.isPlaying
+    ) {
+      return <span className="ion-md-pause" />;
+    } else if (
+      this.state.hoverSong == song &&
+      this.state.currentSong == song &&
+      !this.state.isPlaying
+    ) {
+      return <span className="ion-md-play" />;
+    } else if (
+      this.state.hoverSong != song &&
+      this.state.currentSong == song &&
+      !this.state.isPlaying
+    ) {
+      return <span className="ion-md-play" />;
+    } else {
+      return index + 1;
+    }
+  }
+
+  handleHover(song) {
+    this.setState({ hoverSong: song });
+  }
+
+  removeHover() {
+    this.setState({ hoverSong: null });
   }
 
   render() {
@@ -81,16 +119,10 @@ class Album extends Component {
                 className="song"
                 key={index}
                 onClick={() => this.handleSongClick(song)}
+                onMouseEnter={() => this.handleHover(song)}
+                onMouseLeave={() => this.removeHover()}
               >
-                <td
-                  className="song"
-                  key={index}
-                  onMouseEnter={() => this.hoverPlayPauseButton(song)}
-                  //onMouseLeave={() => {
-                  //{ index + 1
-                  // {index + 1}
-                />
-                {index + 1}
+                <td>{this.hoverPlayPauseButton(song, index)}</td>
                 <td>{song.title}</td>
                 <td>{song.duration}</td>
               </tr>
