@@ -58,6 +58,20 @@ class Album extends Component {
     this.play();
   }
 
+  // modeled after handlePrevClick with changes in nextIndex using Mathmin method to return lowest index value of either next song or end of song index
+  handleNextClick() {
+    const currentIndex = this.state.album.songs.findIndex(
+      song => this.state.currentSong === song
+    );
+    const nextIndex = Math.min(
+      currentIndex + 1,
+      this.state.album.songs.length - 1
+    );
+    const nextSong = this.state.album.songs[nextIndex];
+    this.setSong(nextSong);
+    this.play();
+  }
+
   // function to show play and/or pause button in place of song# when hovering over song
   hoverPlayPauseButton(song, index) {
     if (
@@ -144,6 +158,7 @@ class Album extends Component {
           currentSong={this.state.currentSong}
           handleSongClick={() => this.handleSongClick(this.state.currentSong)}
           handlePrevClick={() => this.handlePrevClick()}
+          handleNextClick={() => this.handleNextClick()}
         />
       </section>
     );
