@@ -32,7 +32,16 @@ class PlayerBar extends Component {
         </section>
         <section id="volume-control">
           <div className="icon ion-md-volume-low" />
-          <input type="range" className="seek-bar" value="80" />
+          <input
+            type="range"
+            className="seek-bar"
+            value={this.props.currentVolume / this.props.maxVolume || 0}
+            max="1"
+            min="0"
+            step="0.01"
+            // onChange currently makes the volume slider do funny things to the time slider numbers
+            onChange={this.props.handleVolumeChange}
+          />
           <div className="icon ion-md-volume-high" />
         </section>
       </section>

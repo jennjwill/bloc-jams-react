@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import albumData from "./../data/albums";
 import PlayerBar from "./PlayerBar";
+import { NPN_ENABLED } from "constants";
 
 class Album extends Component {
   constructor(props) {
@@ -15,6 +16,9 @@ class Album extends Component {
       currentSong: album.songs[0],
       currentTime: 0,
       duration: album.songs[0].duration,
+      // currentVolume and maxVolume modeled after currentTime and duration from HW to set and manage volume state
+      currentVolume: 0,
+      maxVolume: 0,
       isPlaying: false,
       hoverSong: null
     };
@@ -33,6 +37,12 @@ class Album extends Component {
     this.setState({ isPlaying: false });
   }
 
+  // added to get volume functioning in slider but I don't know how to use it with the slider
+  volume() {
+    this.audioElement.volume();
+    this.setState({ isPlaying: true });
+  }
+
   componentDidMount() {
     this.eventListeners = {
       timeupdate: e => {
@@ -40,8 +50,13 @@ class Album extends Component {
       },
       durationchange: e => {
         this.setState({ duration: this.audioElement.duration });
+      },
+      // mimicking timeupdate and duration change event listeners to create volume event listeners--did not add maxVolume b/c that stays the same
+      volumeupdate: e => {
+        this.setState({ currentVolume: this.audioElement.currentVolume });
       }
     };
+
     this.audioElement.addEventListener(
       "timeupdate",
       this.eventListeners.timeupdate
@@ -49,6 +64,10 @@ class Album extends Component {
     this.audioElement.addEventListener(
       "durationchange",
       this.eventListeners.durationchange
+    );
+    this.audioElement.addEventListener(
+      "volumeupdate",
+      this.eventListeners.volumeupdate
     );
   }
 
@@ -61,6 +80,11 @@ class Album extends Component {
     this.audioElement.removeEventListener(
       "durationchange",
       this.eventListeners.durationchange
+    );
+    // added this to remove volume slider control on unmount
+    this.audioElement.removeEventListener(
+      "volumeupdate",
+      this.eventListeners.volumeupdate
     );
   }
 
@@ -155,6 +179,13 @@ class Album extends Component {
     this.setState({ currentTime: newTime });
   }
 
+  // modeling handleVolumeChange after handleTimeChange
+  handleVolumeChange(e) {
+    const newVolume = this.audioElement.maxVolume * e.target.value;
+    this.audioElement.currentVolume = newVolume;
+    this.setState({ currentVolume: newVolume });
+  }
+
   render() {
     return (
       <section className="album">
@@ -197,10 +228,14 @@ class Album extends Component {
           currentSong={this.state.currentSong}
           currentTime={this.audioElement.currentTime}
           duration={this.audioElement.duration}
+          // currentVolume and maxVolume passed as props to PlayerBar
+          currentVolume={this.audioElement.currentVolume}
+          maxVolume={this.audioElement.maxVolume}
           handleSongClick={() => this.handleSongClick(this.state.currentSong)}
           handlePrevClick={() => this.handlePrevClick()}
           handleNextClick={() => this.handleNextClick()}
           handleTimeChange={e => this.handleTimeChange(e)}
+          handleVolumeChange={e => this.handleVolumeChange(e)}
         />
       </section>
     );
