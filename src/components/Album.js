@@ -17,8 +17,8 @@ class Album extends Component {
       currentTime: 0,
       duration: album.songs[0].duration,
       // currentVolume and maxVolume modeled after currentTime and duration from HW to set and manage volume state
-      currentVolume: 0,
-      maxVolume: 0,
+      currentVolume: 0.8,
+      maxVolume: 1,
       isPlaying: false,
       hoverSong: null
     };
@@ -181,9 +181,18 @@ class Album extends Component {
 
   // modeling handleVolumeChange after handleTimeChange
   handleVolumeChange(e) {
-    const newVolume = this.audioElement.maxVolume * e.target.value;
-    this.audioElement.currentVolume = newVolume;
+    const newVolume = e.target.value;
+    this.audioElement.volume = newVolume;
     this.setState({ currentVolume: newVolume });
+  }
+
+  formatTime(totalSeconds) {
+    let minutes = Math.floor(totalSeconds / 60);
+    let seconds = Math.floor(totalSeconds % 60);
+
+    minutes = String(minutes).padStart(2, "0");
+    seconds = String(seconds).padStart(2, "0");
+    return minutes + ":" + seconds;
   }
 
   render() {
@@ -226,11 +235,10 @@ class Album extends Component {
         <PlayerBar
           isPlaying={this.state.isPlaying}
           currentSong={this.state.currentSong}
-          currentTime={this.audioElement.currentTime}
-          duration={this.audioElement.duration}
-          // currentVolume and maxVolume passed as props to PlayerBar
-          currentVolume={this.audioElement.currentVolume}
-          maxVolume={this.audioElement.maxVolume}
+          currentTime={this.formatTime(this.audioElement.currentTime)}
+          duration={this.formatTime(this.audioElement.duration)}
+          // currentVolume passed as props to PlayerBar
+          currentVolume={this.state.currentVolume}
           handleSongClick={() => this.handleSongClick(this.state.currentSong)}
           handlePrevClick={() => this.handlePrevClick()}
           handleNextClick={() => this.handleNextClick()}
