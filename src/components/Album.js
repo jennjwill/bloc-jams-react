@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import albumData from "./../data/albums";
 import PlayerBar from "./PlayerBar";
+import "./Album.css";
 import { NPN_ENABLED } from "constants";
 
 class Album extends Component {
@@ -190,7 +191,7 @@ class Album extends Component {
     let minutes = Math.floor(totalSeconds / 60);
     let seconds = Math.floor(totalSeconds % 60);
 
-    minutes = String(minutes).padStart(2, "0");
+    minutes = String(minutes);
     seconds = String(seconds).padStart(2, "0");
     return minutes + ":" + seconds;
   }
@@ -227,7 +228,7 @@ class Album extends Component {
               >
                 <td>{this.hoverPlayPauseButton(song, index)}</td>
                 <td>{song.title}</td>
-                <td>{song.duration}</td>
+                <td>{this.formatTime(song.duration)}</td>
               </tr>
             ))}
           </tbody>
@@ -235,8 +236,10 @@ class Album extends Component {
         <PlayerBar
           isPlaying={this.state.isPlaying}
           currentSong={this.state.currentSong}
-          currentTime={this.formatTime(this.audioElement.currentTime)}
-          duration={this.formatTime(this.audioElement.duration)}
+          currentTime={this.audioElement.currentTime}
+          duration={this.audioElement.duration}
+          // passing formatTime as props to apply to currentTime & duration in PlayerBar component
+          formatTime={t => this.formatTime(t)}
           // currentVolume passed as props to PlayerBar
           currentVolume={this.state.currentVolume}
           handleSongClick={() => this.handleSongClick(this.state.currentSong)}
