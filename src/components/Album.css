@@ -1,0 +1,16 @@
+#album-cover-art {
+  margin: 5px;
+  border: 1px solid #ccc;
+  box-shadow: 10px 10px 5px grey;
+  width: 180px;
+}
+
+#album-details {
+}
+
+tr,
+td {
+  border-bottom: 1px solid #ddd;
+  padding: 8px;
+  text-align: center;
+}
