@@ -188,12 +188,16 @@ class Album extends Component {
   }
 
   formatTime(totalSeconds) {
-    let minutes = Math.floor(totalSeconds / 60);
-    let seconds = Math.floor(totalSeconds % 60);
+    if (typeof totalSeconds == "NaN") {
+      return "-:--";
+    } else {
+      let minutes = Math.floor(totalSeconds / 60);
+      let seconds = Math.floor(totalSeconds % 60);
 
-    minutes = String(minutes);
-    seconds = String(seconds).padStart(2, "0");
-    return minutes + ":" + seconds;
+      minutes = String(minutes);
+      seconds = String(seconds).padStart(2, "0");
+      return minutes + ":" + seconds;
+    }
   }
 
   render() {
