@@ -1,3 +1,6 @@
+body {
+}
+
 .hero-title {
   font-size: 10vw;
   font-variant: small-caps;
@@ -12,7 +15,7 @@
 }
 
 /* using section in attempt to style the whole page but it's obv breaking the gradient into sections */
-section {
+body {
   color: black;
   text-align: center;
   background-image: linear-gradient(white, lightgray);
