@@ -1,6 +1,6 @@
 #album-cover-art {
   border: 1px solid #ccc;
-  border-radius: 50%;
+  border-radius: ;
   box-shadow: 10px 10px 5px grey;
   hover: ;
   margin: 5px;
@@ -10,11 +10,12 @@
 #album-details {
 }
 
-PlayerBar {
+#playerbar {
+  /* background-color:  rgba(76, 175, 80, 0.3); */
+  background-color: none;
   position: -webkit-sticky;
   position: sticky;
   bottom: 0;
-  padding: 5px;
 }
 
 #song-list {

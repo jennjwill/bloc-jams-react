@@ -1,6 +1,12 @@
 img {
   margin: 5px;
   border: 1px solid #ccc;
+  border-radius: 50%;
   box-shadow: 10px 10px 5px grey;
   width: 180px;
+}
+
+img:hover {
+  box-shadow: 0 12px 16px 0 rgba(0, 0, 0, 0.24),
+    0 17px 50px 0 rgba(0, 0, 0, 0.19);
 }

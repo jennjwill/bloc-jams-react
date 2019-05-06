@@ -14,10 +14,9 @@ body {
   font-variant: small-caps;
 }
 
-/* using section in attempt to style the whole page but it's obv breaking the gradient into sections */
 body {
   color: black;
   text-align: center;
   background-image: linear-gradient(white, lightgray);
-  font-family: "Ubuntu", sans-serif;
+  font-family: "Montserrat", sans-serif;
 }

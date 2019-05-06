@@ -237,21 +237,23 @@ class Album extends Component {
             ))}
           </tbody>
         </table>
-        <PlayerBar
-          isPlaying={this.state.isPlaying}
-          currentSong={this.state.currentSong}
-          currentTime={this.audioElement.currentTime}
-          duration={this.audioElement.duration}
-          // passing formatTime as props to apply to currentTime & duration in PlayerBar component
-          formatTime={t => this.formatTime(t)}
-          // currentVolume passed as props to PlayerBar
-          currentVolume={this.state.currentVolume}
-          handleSongClick={() => this.handleSongClick(this.state.currentSong)}
-          handlePrevClick={() => this.handlePrevClick()}
-          handleNextClick={() => this.handleNextClick()}
-          handleTimeChange={e => this.handleTimeChange(e)}
-          handleVolumeChange={e => this.handleVolumeChange(e)}
-        />
+        <div id="playerbar">
+          <PlayerBar
+            isPlaying={this.state.isPlaying}
+            currentSong={this.state.currentSong}
+            currentTime={this.audioElement.currentTime}
+            duration={this.audioElement.duration}
+            // passing formatTime as props to apply to currentTime & duration in PlayerBar component
+            formatTime={t => this.formatTime(t)}
+            // currentVolume passed as props to PlayerBar
+            currentVolume={this.state.currentVolume}
+            handleSongClick={() => this.handleSongClick(this.state.currentSong)}
+            handlePrevClick={() => this.handlePrevClick()}
+            handleNextClick={() => this.handleNextClick()}
+            handleTimeChange={e => this.handleTimeChange(e)}
+            handleVolumeChange={e => this.handleVolumeChange(e)}
+          />
+        </div>
       </section>
     );
   }
