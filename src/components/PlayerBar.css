@@ -1,5 +1,4 @@
 button {
-  /* background-color: whitesmoke; */
   border: none;
   border-radius: 50%;
   color: black;
@@ -14,22 +13,24 @@ button:hover {
 }
 
 .current-time {
-  float: ;
   font-size: 15px;
 }
 
 #time-control {
+  display: flex;
   float: left;
   padding: 20px;
+  align-items: center;
 }
 
 #volume-control {
+  display: flex;
   float: right;
   padding: 20px;
+  align-items: center;
 }
 
 .total-time {
-  float: ;
   font-size: 15px;
 }
 

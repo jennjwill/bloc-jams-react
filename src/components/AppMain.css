@@ -1,13 +1,9 @@
-body {
-}
-
 .hero-title {
-  font-size: 10vw;
   font-variant: small-caps;
 }
 
 .point-description {
-  font-family: "Ubuntu", sans-serif;
+  font-family: "Montserrat", sans-serif;
 }
 
 .point-title {

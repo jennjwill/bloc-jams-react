@@ -31,3 +31,30 @@
     transform: rotate(360deg);
   }
 }
+
+nav a {
+  position: absolute;
+  left: -50px;
+  transition: 0.3s;
+  padding: 20px;
+  width: 70px;
+  font-size: 20px;
+  color: black;
+  border-radius: 0 5px 5px 0;
+}
+
+nav a:hover {
+  left: 0;
+}
+
+#landing {
+  text-decoration: none;
+  top: 20px;
+  background-color: rgb(168, 168, 218);
+}
+
+#library {
+  text-decoration: none;
+  top: 120px;
+  background-color: rgb(168, 168, 218);
+}
