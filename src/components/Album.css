@@ -1,14 +1,16 @@
 #album-cover-art {
   border: 1px solid #ccc;
-  border-radius: ;
+  border-radius: 50%;
   box-shadow: 10px 10px 5px grey;
-  hover: ;
+  flex: 50%;
   margin: 5px;
-  width: 180px;
+  width: 200px;
 }
 
-#album-details {
-  display: flex;
+.album-details {
+  flex: 50%;
+  height: 100 px;
+  padding: 15px;
 }
 
 #playerbar {

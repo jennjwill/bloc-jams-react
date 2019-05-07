@@ -11,8 +11,9 @@
 }
 
 body {
+  background: linear-gradient(white, lightgray);
+  /* height: 100%; */
   color: black;
   text-align: center;
-  background-image: linear-gradient(white, lightgray);
   font-family: "Montserrat", sans-serif;
 }
