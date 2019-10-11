@@ -1,3 +1,7 @@
+## Bloc Jams
+
+Bloc Jams is a music-player app that I built as part of the web development program for www.bloc.io.
+
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts
